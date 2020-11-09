@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "gameTable")
 data class Game (
     @ColumnInfo()
-    var date: Long,
+    var date: String,
     @ColumnInfo(name = "move_computer")
     var moveComputer: String,
     @ColumnInfo(name = "move_player")
