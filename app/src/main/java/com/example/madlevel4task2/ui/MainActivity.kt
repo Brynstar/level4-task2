@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
                 history_button.hide()
             } else {
                 history_button.show()
+                
             }
         }
     }
