@@ -30,8 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_marginTop="10dp"
-        android:background="?android:attr/listDivider"
-        android:backgroundTint="@color/design_default_color_primary"
+        android:background="@color/design_default_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/instructions" />
@@ -41,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/statistics"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider" />
@@ -54,11 +54,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/statistics" />
 
+    <include
+        android:id="@+id/results_screen"
+        layout="@layout/results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/win_draw_lose" />
+
     <ImageView
         android:id="@+id/rock"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/design_default_color_primary"
         android:contentDescription="@string/choice_rock"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/paper"
@@ -71,6 +82,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/design_default_color_primary"
         android:contentDescription="@string/choice_paper"
         android:src="@drawable/paper"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,6 +95,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/design_default_color_primary"
         android:contentDescription="@string/choice_scissors"
         android:src="@drawable/scissors"
         app:layout_constraintBottom_toBottomOf="parent"
