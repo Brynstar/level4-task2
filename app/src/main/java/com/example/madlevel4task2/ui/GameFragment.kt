@@ -1,13 +1,13 @@
 package com.example.madlevel4task2.ui
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.madlevel4task2.R
+import com.example.madlevel4task2.helper.HelperClass
 import com.example.madlevel4task2.model.Game
 import com.example.madlevel4task2.repository.GameRepository
 import kotlinx.android.synthetic.main.fragment_game.*
@@ -24,6 +24,7 @@ import java.util.*
 class GameFragment : Fragment() {
     private lateinit var gameRepository: GameRepository
     private val games = arrayListOf<Game>()
+    private val help = HelperClass()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,15 +36,17 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val actionbar = (activity as AppCompatActivity).supportActionBar
+        actionbar?.title = getString(R.string.app_name)
         gameRepository = GameRepository(requireContext())
         getGamesFromDatabase()
-        rock.setOnClickListener {
+        ivRock.setOnClickListener {
             startGame("rock")
         }
-        paper.setOnClickListener {
+        ivPaper.setOnClickListener {
             startGame("paper")
         }
-        scissors.setOnClickListener {
+        ivScissors.setOnClickListener {
             startGame("scissors")
         }
     }
@@ -76,7 +79,7 @@ class GameFragment : Fragment() {
                 }
             }
         }
-        win_draw_lose.text = resources.getString(R.string.win_draw_lose, wins, draws, losses)
+        tvWinDrawLose.text = resources.getString(R.string.win_draw_lose, wins, draws, losses)
     }
 
     private fun startGame(playerChoice: String) {
@@ -91,12 +94,11 @@ class GameFragment : Fragment() {
             }
             getGamesFromDatabase()
         }
-        result_title.text = calcResultText(result)
-        computer_choice.setImageDrawable(calcChosenIcon(computerChoice))
-        player_choice.setImageDrawable(calcChosenIcon(playerChoice))
-        results_screen.visibility = View.VISIBLE
+        tvResultTitle.text = help.calcResultText(result)
+        ivComputerChoice.setImageResource(help.calcChosenIcon(computerChoice))
+        ivPlayerChoice.setImageResource(help.calcChosenIcon(playerChoice))
+        resultsScreen.visibility = View.VISIBLE
     }
-
 
     private fun calcComputerChoice(): String {
         return when ((1..3).random()) {
@@ -153,36 +155,5 @@ class GameFragment : Fragment() {
             }
         }
         return "draw"
-    }
-
-    private fun calcResultText(result: String): String {
-        return when (result) {
-            "win" -> {
-                resources.getString(R.string.you_win)
-            }
-            "lose" -> {
-                resources.getString(R.string.you_lose)
-
-            }
-            else -> {
-                resources.getString(R.string.you_draw)
-
-            }
-        }
-    }
-
-    private fun calcChosenIcon(icon: String): Drawable? {
-        return when (icon) {
-            "rock" -> {
-                ResourcesCompat.getDrawable(resources, R.drawable.rock, null)
-            }
-            "paper" -> {
-                ResourcesCompat.getDrawable(resources, R.drawable.paper, null)
-            }
-            else -> {
-                ResourcesCompat.getDrawable(resources, R.drawable.scissors, null)
-
-            }
-        }
     }
 }

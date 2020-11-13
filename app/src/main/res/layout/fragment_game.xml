@@ -7,7 +7,7 @@
     tools:context=".ui.GameFragment">
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome"
@@ -17,13 +17,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/instructions"
+        android:id="@+id/tvInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/instructions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcome" />
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
 
     <View
         android:id="@+id/divider"
@@ -33,10 +33,10 @@
         android:background="@color/design_default_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/instructions" />
+        app:layout_constraintTop_toBottomOf="@id/tvInstructions" />
 
     <TextView
-        android:id="@+id/statistics"
+        android:id="@+id/tvStatistics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -46,40 +46,40 @@
         app:layout_constraintTop_toBottomOf="@id/divider" />
 
     <TextView
-        android:id="@+id/win_draw_lose"
+        android:id="@+id/tvWinDrawLose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/win_draw_lose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statistics" />
+        app:layout_constraintTop_toBottomOf="@id/tvStatistics" />
 
     <include
-        android:id="@+id/results_screen"
+        android:id="@+id/resultsScreen"
         layout="@layout/results"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/win_draw_lose" />
+        app:layout_constraintTop_toBottomOf="@id/tvWinDrawLose" />
 
     <ImageView
-        android:id="@+id/rock"
+        android:id="@+id/ivRock"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="16dp"
         android:background="@color/design_default_color_primary"
         android:contentDescription="@string/choice_rock"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/paper"
+        app:layout_constraintEnd_toStartOf="@+id/ivPaper"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rock" />
 
     <ImageView
-        android:id="@+id/paper"
+        android:id="@+id/ivPaper"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="16dp"
@@ -87,12 +87,12 @@
         android:contentDescription="@string/choice_paper"
         android:src="@drawable/paper"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/scissors"
+        app:layout_constraintEnd_toStartOf="@+id/ivScissors"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/rock" />
+        app:layout_constraintStart_toEndOf="@id/ivRock" />
 
     <ImageView
-        android:id="@+id/scissors"
+        android:id="@+id/ivScissors"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginBottom="16dp"
@@ -102,6 +102,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/paper" />
+        app:layout_constraintStart_toEndOf="@+id/ivPaper" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

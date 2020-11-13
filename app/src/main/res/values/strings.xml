@@ -14,4 +14,6 @@
     <string name="you">You</string>
     <string name="vs">V.S.</string>
     <string name="history">Your Game History</string>
+    <string name="delete">Delete</string>
+    <string name="return_to_game">Return</string>
 </resources>

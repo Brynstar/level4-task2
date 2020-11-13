@@ -1,33 +1,45 @@
 package com.example.madlevel4task2.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.madlevel4task2.R
+import com.example.madlevel4task2.repository.GameRepository
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
+    private lateinit var gameRepository: GameRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
         navController = findNavController(R.id.nav_host_fragment)
-        history_button.setOnClickListener {
+        fabHistory.setOnClickListener {
             navController.navigate(R.id.action_gameFragment_to_historyFragment)
         }
-        historyButtonToggler()
+        fabReturn.setOnClickListener {
+            navController.navigate(R.id.action_historyFragment_to_gameFragment)
+        }
+        fabDelete.setOnClickListener {
+            // Delete game list
+        }
+        fragmentToggler()
     }
 
-    private fun historyButtonToggler() {
+    private fun fragmentToggler() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id in arrayOf(R.id.historyFragment)) {
-                history_button.hide()
+                fabHistory.hide()
+                fabDelete.show()
+                fabReturn.show()
             } else {
-                history_button.show()
-                
+                fabReturn.hide()
+                fabDelete.hide()
+                fabHistory.show()
             }
         }
     }

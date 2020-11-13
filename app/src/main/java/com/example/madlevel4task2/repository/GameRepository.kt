@@ -26,6 +26,12 @@ class GameRepository(context: Context) {
         gameDao.deleteGame(game)
     }
 
+    suspend fun clearGameList(gameList: List<Game>) {
+        for (game in gameList) {
+            gameDao.deleteGame(game)
+        }
+    }
+
     suspend fun updateGame(game: Game) {
         gameDao.updateGame(game)
     }
